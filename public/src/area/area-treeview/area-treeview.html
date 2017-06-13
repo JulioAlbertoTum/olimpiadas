@@ -1,0 +1,15 @@
+<div class="siderbar-collapse">
+  <ul class="nav"  style="height-min:200px !important;" id="area-menu" >
+    <li ng-repeat="area in $ctrl.areas()" >
+       <a href="#" ng-click="$ctrl.menu($index)"><i class="fa fa-sitemap"></i> {{area.name}}
+        <span class="fa arrow"></span>
+       </a>
+       <ul class="nav nav-second-level">
+         <li ng-repeat="subarea in area.subareas track by $index" >
+          <a ng-click="$ctrl.makeAction(subarea)"><i class="fa fa-folder"></i>{{subarea.name}}</a>
+         </li>
+       </ul>
+    </li>
+  </ul>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="form-group input-group">
+	<span class="input-group-addon">
+    <input type="checkbox" ng-model="$ctrl.option.isCorrect" ng-disabled="$ctrl.isViewed()">
+  </span>
+  <input type="text" class="form-control" ng-model="$ctrl.option.description" ng-disabled="$ctrl.isViewed()">
+	<span class="input-group-btn">		
+		<button type="button" class="btn btn-danger btn-circle-sm" ng-click="$ctrl.delete()" ng-disabled="$ctrl.isViewed()">
+			<i class="fa fa-times "></i>
+		</button>
+	</span>
+</div>

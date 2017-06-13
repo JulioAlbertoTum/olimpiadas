@@ -1,0 +1,12 @@
+<div ng-if="$ctrl.isPreview()">
+	<hr>
+	<h3>Vista preliminar</h3>
+	<p>{{$ctrl.question.description}}</p>
+	
+	<form action="" ng-if="$ctrl.question.type_question == 'multiple'">
+		<div class="form-group" ng-repeat="option in $ctrl.question.options">
+			<input type="radio" name="solution"> {{option.description}}
+		</div>
+	</form>
+
+<div>

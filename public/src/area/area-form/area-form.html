@@ -1,0 +1,27 @@
+<form name="areaForm" novalidate>
+  <div class="form-group" ng-class="{'has-error':(areaForm.name.$error.required || areaForm.name.$error.minlength) && areaForm.name.$touched}">
+    <label for="name">Nombre</label>
+    <input type="text" name="name" class="form-control" 
+           ng-model="$ctrl.area.name" value="{{$ctrl.area.name}}" 
+           required minlength="5" >
+  </div>
+  <div  class="alert alert-danger" ng-if="(areaForm.name.$error.required || areaForm.name.$error.minlength) && areaForm.name.$touched">
+        El nombre debe tener al menos 5 caracteres
+    </div>
+  <div class="form-group">
+    <label>Descripcion</label>
+    <textarea class="form-control" name="description" rows="3" ng-model=" $ctrl.area.description">{{$ctrl.area.description}}
+    </textarea>
+  </div>
+  <div class="form-group" ng-if="$ctrl.create" >
+    <label>Area a la que pertenece</label>
+    <select class="form-control" ng-model="$ctrl.area.parent" name="superarea">
+      <option value="" ng-selected="selected" >Ninguna</option>
+      <option value="{{area._id}}" ng-repeat="area in $ctrl.super()">{{ area.name }}</option>
+    </select>
+  </div>
+  <button ng-if="$ctrl.create" type="button" class="btn btn-success" ng-click="$ctrl.createArea()" ng-disabled="areaForm.$invalid">Crear
+  </button>
+  <button ng-if="!$ctrl.create" type="button" class="btn btn-success" ng-click="$ctrl.updateArea()" ng-disabled="areaForm.$invalid" >Guardar Cambios
+  </button>
+</form>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- open mind sort -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluebox Free Bootstrap Admin Template</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css"> 
+</head>
+
+<body ng-app="olimpiadas">
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><strong>Olimpiadas</strong></a>
+            </div>
+
+            <!-- <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    
+                </li>
+                
+            </ul> -->
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+		      <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+            <div class="sidebar-collapse">
+              <ul class="nav" id="main-menu" >
+                <li>
+                  <a ui-sref-active="active-menu" ui-sref="home"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                  <a href=""><i class="fa fa-users"></i> Users</a>
+                </li>
+					      <li>
+                  <a ui-sref-active="active-menu" ui-sref="area"><i class="fa fa-bar-chart-o"></i> Areas</a>
+                </li>
+                <li>
+                  <a ui-sref-active="active-menu" ui-sref="temario"><i class="fa fa-fw fa-file"></i> Temario</a>
+                </li>
+               <!--  <li>
+                  <a href=""><i class="fa fa-qrcode"></i> Comites</a>
+                </li>    
+                <li>
+                  <a href=""><i class="fa fa-table"></i> Evaluaciones</a>
+                </li> -->
+                <!-- <li>
+                  <a ui-sref-active="active-menu" ui-sref="question"><i class="fa fa-edit"></i> Preguntas</a>
+                </li> -->
+                <!-- <li>
+                  <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown
+                    <span class="fa arrow"></span>
+                  </a>
+                  <ul class="nav nav-second-level">
+                    <li>
+                      <a href="#">Second Level Link</a>
+                    </li>
+                    <li>
+                      <a href="#">Second Level Link</a>
+                    </li>
+                    <li>
+                      <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                      <ul class="nav nav-third-level">
+                        <li>
+                          <a href="#">Third Level Link</a>
+                        </li>
+                        <li>
+                          <a href="#">Third Level Link</a>
+                        </li>
+                        <li>
+                          <a href="#">Third Level Link</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li> -->
+                
+              </ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->  
+		    <div id="page-wrapper">
+		      <ui-view></ui-view>
+          <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+
+      
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+	 
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+	
+	
+	<script src="assets/js/easypiechart.js"></script>
+	<script src="assets/js/easypiechart-data.js"></script>
+	
+	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+	<script src="assets/js/custom-scripts.js"></script>
+    <!-- Custom Js -->
+    
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <script src="src/olimpiadas.module.js"></script>
+    <!-- <script src="src/repeat.watch.directive.js"></script> -->
+    
+    <script src="src/area/area.service.js"></script>
+    
+    <script src="src/area/area-treeview/area-treeview.component.js"></script>
+    <script src="src/area/area-delete/area-delete.component.js"></script>
+    <script src="src/area/area-view/area-view.component.js"></script> 
+    <script src="src/area/area-form/area-form.component.js"></script>
+    <script src="src/area/area-table/area-table.component.js"></script>
+    <script src="src/area/area.controller.js"></script>
+
+    <script src="src/temario/temario.service.js"></script>
+    
+    <script src="src/temario/temario-delete/temario-delete.component.js"></script>
+    <script src="src/temario/temario-table/temario-table.component.js"></script>
+    <script src="src/temario/temario-view/temario-view.component.js"></script>
+    <script src="src/temario/temario-form/temario-form.component.js"></script>
+    <script src="src/temario/temario.controller.js"></script>
+    
+    <script src="src/question/question.service.js"></script>
+    
+    <script src="src/question/question-option/question-option.component.js"></script>
+    <script src="src/question/question-view/question-view.component.js"></script>
+    <script src="src/question/question-list/question-list.component.js"></script>
+    <script src="src/question/question-form/question-form.component.js"></script>
+    <script src="src/question/question.controller.js"></script>
+    
+
+    <script src="src/home/home-login/home-login.component.js"></script>
+    <script src="src/home/home.controller.js"></script>
+    
+    <script src="src/olimpiadas.routes.js"></script>
+    
+   
+</body>
+
+</html>

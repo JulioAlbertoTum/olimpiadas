@@ -1,0 +1,3 @@
+<p>Esta seguro que quiere eliminar el area <strong>{{$ctrl.area.name}}</strong></p>
+<p ng-if="!$ctrl.area.superarea">Si elimina esta area tambien las subareas seran eliminadas.</p>
+<button class="btn btn-danger" ng-click="$ctrl.deleteArea()">Eliminar</button>

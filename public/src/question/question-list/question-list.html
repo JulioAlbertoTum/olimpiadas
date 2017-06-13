@@ -1,0 +1,8 @@
+<div class="list-group">
+	<a href="" class="list-group-item" ng-repeat="question in $ctrl.questions" ng-click="$ctrl.setCurrent($index)">
+		<span class="badge bg-purple" ng-if="question.type_question == 'simple'">{{question.type_question}}</span>
+		<span class="badge bg-observatory" ng-if="question.type_question == 'multiple'">{{question.type_question}}</span>
+		<i class="fa fa-chevron-right"></i>
+		{{question.description | limitTo:25}} ...
+	</a>
+</div>
