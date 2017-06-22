@@ -1,0 +1,29 @@
+
+1. Instalar git:  sudo apt-get install git
+2. instalar MongoDB:
+			sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+			echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+			sudo apt-get update
+			sudo apt-get install -y mongodb-org
+			service mongod status
+			(para verificar si funciona el servicio) mongod start/running, process 8247
+3. Instalar Node.js
+			curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+			sudo apt-get install -y nodejs
+			sudo apt-get install build-essential
+			(verificamos si tenemos npm) npm -v
+
+4. clonar el repositorio o ejecutar el codigo fuente desde la carpeta olimpiadas
+			Para clonar :  git clone git@github.com:JulioAlbertoTum/olimpiadas.git
+			Ejecutamos dentro de la carpeta olimpiadas con: npm run start
+
+5. dentro de la carpeta olimpiadas en el archivo server.js la linea 6 configura el puerto que usara la aplicacion
+    port = process.env.PORT || NRO_PUERTO;
+
+6. en la carpeta public/src en el archivo olimpiadas.module.js cambiar la direccion del API REST y/o el puerto que esta contenida en la constante ApiPath
+
+7. Para configurar el api rest del servicio que envia informacion del rude en la direccion api/controllers
+el archivo UserController.js en la linea 90 cambiar la direccion y/o el puerto al que se haran los requerimientos 
+	request('http://localhost:3000/rude/'+req.body.rude, function(error,response,body){
+
+8. para ejecutar hacer npm run start
