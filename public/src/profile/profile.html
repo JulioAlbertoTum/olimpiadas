@@ -1,0 +1,55 @@
+<div class="header"> 
+  <h1 class="page-header">
+    {{profCtrl.titulo}}<small> </small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Perfil de Usuario</a></li>
+  </ol>             
+</div>
+<div id="page-inner">
+  <div class="messages">
+    <div class="alert alert-warning-custom" ng-if="profCtrl.isStudent() && !profCtrl.isVerify()">
+      <strong>No has verificado tu codigo RUDE</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Foto de Perfil
+        </div>
+        <div class="panel-body">
+          <a class="thumbnail" ng-click="profCtrl.upload()">
+            <img ng-src="{{profCtrl.defaultPhoto}}" alt="{{profCtrl.user.username}}">
+          </a>
+          <form action="">
+              <div class="form-group">
+                <input type="file" id="photo"  class="form-control" name="photo" ng-model-instant style="display:none;" >
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+    	<profile-form user="profCtrl.user" on-update="profCtrl.updateProfile()"></profile-form>
+
+      <div class="panel panel-default" ng-if="profCtrl.isStudent() && !profCtrl.isVerify()">
+        <div class="panel-heading">
+          Codigo RUDE
+        </div>
+        <div class="panel-body">
+            <form name="rudeForm" novalidate>
+              <div class="form-group">
+                <label for="rude">Codigo Rude</label>
+                <input type="text" class="form-control" name="rude" ng-model="profCtrl.rude" required>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-success" ng-disabled="rudeForm.$invalid" ng-click="profCtrl.validateRude()">Validar Codigo</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -8,55 +8,6 @@ AreaService.$inject = ['$http','ApiPath'];
 function AreaService($http, ApiPath){
 	var service = this;
 
-	
-
-	service.treeAreas = [
-			{
-			_id:"7",
-			name:"Quimica",
-			description:"desc",
-			superarea: null
-			},
-			{
-			_id:"1",
-			name:"Fisica",
-			description:"desc",
-			superarea: [
-				{
-					_id:"11",
-					name:"Mecanica",
-					description:"desc",
-					superarea: 1
-				}
-			]
-		},
-		{
-			_id:"2",
-			name:"Matematicas",
-			description:"desc mat",
-			superarea:[
-				{
-					_id:"4",
-					name:"Geometria",
-					description:"desc",
-					superarea: 2
-				},
-				{
-					_id:"5",
-					name:"Calculo",
-					description:"desc",
-					superarea: 2
-				},
-				{
-					_id:"6",
-					name:"Algebra",
-					description:"desc",
-					superarea: 2
-				}
-			]
-		}	
-	];
-
 	//service.size = service.areas.length;
 
 
@@ -66,8 +17,33 @@ function AreaService($http, ApiPath){
 		});
 	}
 
-	service.getTreeAreas = function(){
-		return service.treeAreas;
+	service.getTreeAreas = function(areas){
+		var superareas = [];
+		var subareas = [];
+		for(var i=0; i<areas.length; i++){
+			if(areas[i].parent == null){
+				superareas.push(areas[i]);
+				// superareas.subareas = [];
+			}else{
+				subareas.push(areas[i]);
+			}
+		}
+		
+		for(var i=0; i<superareas.length; i++){
+			var superu = superareas[i];
+			superu.subareas = [];
+			for(var j=0; j<subareas.length; j++){
+				var sub = subareas[j];
+				if(sub.parent.toString() == superu._id.toString()){
+					// console.log(superu.name,sub.name);
+					// console.log(superu.subareas);
+					superu.subareas.push(sub);
+				}
+			}
+		}
+
+		// console.log("superareas",superareas)
+		return superareas;
 	}
 
 	

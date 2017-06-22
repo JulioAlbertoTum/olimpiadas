@@ -1,0 +1,39 @@
+<nav class="navbar-default navbar-side" role="navigation">
+		      <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+            <div class="sidebar-collapse">
+              <ul class="nav" id="main-menu" ng-if="$ctrl.rol == 'estudiante' ">
+                <li>
+                  <a  ui-sref="home"><i class="fa fa-home"></i> Home</a>
+                </li>
+					      <li>
+                  <a ui-sref-active="active-menu" ui-sref="home.area({rol:$ctrl.rol})"><i class="fa fa-bar-chart-o"></i>Banco de Preguntas</a>
+                </li>
+                <li>
+                  <a><i class="fa fa-bar-chart-o"></i>Evaluaciones</a>
+                </li>
+                
+              </ul>
+
+              <ul class="nav" id="main-menu" ng-if="$ctrl.rol == 'evaluador' ">
+                <li>
+                  <a  ui-sref="home"><i class="fa fa-home"></i> Home</a>
+                </li>
+              
+                <li>
+                  <a ui-sref-active="active-menu" ui-sref="home.area({rol:$ctrl.rol})"><i class="fa fa-bar-chart-o"></i> Areas</a>
+                </li>
+                <li>
+                  <a ui-sref-active="active-menu" ui-sref="home.temario({rol:$ctrl.rol})"><i class="fa fa-fw fa-file"></i> Temario</a>
+                </li>
+              </ul>
+
+              <ul class="nav" id="main-menu" ng-if="$ctrl.rol == 'admin' ">
+                <li>
+                  <a  ui-sref="home"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                  <a ui-sref-active="active-menu" ui-sref="home.user"><i class="fa fa-users"></i> Users</a>
+                </li>
+              </ul>
+            </div>
+        </nav>

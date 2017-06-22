@@ -9,7 +9,8 @@ angular.module('olimpiadas')
 		temario: '<',
 		onView : '&',
 		onEdit : '&',
-		onDelete : '&'
+		onDelete : '&',
+		rol: '<'
 	}
 
 });

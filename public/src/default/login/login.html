@@ -1,0 +1,20 @@
+<form name="loginForm" action="">
+  <div class="form-group" ng-class="{'has-error':(loginForm.email.$error.required || loginForm.email.$error.email) && loginForm.email.$touched}">
+    <label for="">Email</label>
+    <input type="email" name ="email" class="form-control" ng-model="$ctrl.credentials.email" required>
+    <div  class="alert alert-danger-c" ng-if="(loginForm.email.$error.required) && loginForm.email.$touched">Este campo es obligatorio.
+    </div>
+    <div  class="alert alert-danger-c" ng-if="(loginForm.email.$error.email) && loginForm.email.$touched">
+        El formato de email es incorrecto.
+    </div>
+  </div>
+  <div class="form-group" ng-class="{'has-error':(loginForm.password.$error.required) && loginForm.email.$touched}">
+    <label for="">Contrasena</label>
+    <input type="password" name="password" class="form-control" ng-model="$ctrl.credentials.password" required>
+    <div  class="alert alert-danger-c" ng-if="(loginForm.password.$error.required) && loginForm.password.$touched">Este campo es obligatorio.
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.login()" ng-disabled="loginForm.$invalid">Iniciar Sesion</button>
+  </div>
+</form>   

@@ -1,14 +1,17 @@
-<form action="" ng-if="$ctrl.question">
+<form name="questionForm" ng-if="$ctrl.question" novalidate>
 	<div class="form-group">
 		<select name="" id="" class="form-control" ng-model="$ctrl.question.type_question" ng-disabled="$ctrl.isViewed() || $ctrl.isEditable()">
 							<option value="simple">Simple</option>
 							<option value="multiple">Multiple</option>
 						</select>
 	</div>
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error':(questionForm.description.$error.required) && questionForm.description.$touched}">
 		<label for="description">Pregunta</label>
-		<textarea type="text" name="description" class="form-control" ng-model="$ctrl.question.description" ng-disabled="$ctrl.isViewed()">
+		<textarea type="text" name="description" class="form-control" ng-model="$ctrl.question.description" ng-disabled="$ctrl.isViewed()" required>
 		</textarea>
+		<div  class="alert alert-danger-c" ng-if="(questionForm.description.$error.required) && questionForm.description.$touched">
+        Este campo es obligatorio
+    	</div>
 	</div>
 	<div ng-if="$ctrl.question.type_question == 'multiple'">
 		<div class="col-md-3 col-md-offset-9" ng-if="$ctrl.isCreatable() || $ctrl.isEditable()">
@@ -16,20 +19,19 @@
 				<i class="fa fa-plus "></i> Crear Opcion
 			</button>
 		</div>
-		<div class="form-group"><label for="">Opciones</label></div>
+		<div class="form-group"><label for="">Opciones</label>
 			<question-option ng-repeat="q in $ctrl.question.options" 
 								option="q"
 								index = "$index"
 								status = "$ctrl.status" 
 								on-delete="$ctrl.deleteOption(index)">
 			</question-option>	
-		
-		
+		</div>
 	</div>
 	<div class="form-group" ng-if="$ctrl.isCreatable()">
-		<a class="btn btn-success" ng-click="$ctrl.save()">Guardar</a>
+		<a class="btn btn-success" ng-click="$ctrl.save()" ng-disabled="questionForm.$invalid">Guardar</a>
 	</div>
 	<div class="form-group" ng-if="$ctrl.isEditable()">
-		<a class="btn btn-success" ng-click="$ctrl.update()">Actualizar</a>
+		<a class="btn btn-success" ng-click="$ctrl.update()" ng-disabled="questionForm.$invalid">Actualizar</a>
 	</div>
 </form>

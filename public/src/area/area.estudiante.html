@@ -1,0 +1,42 @@
+<div class="header">
+	<h1 class="page-header">
+		{{areaCtrl.titulo}} <small> {{ areaCtrl.descripcion }} </small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="">Area</a></li>
+	</ol>
+</div>
+<div id="page-inner" >
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Areas Disponibles
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+						<li ng-repeat="area in areaCtrl.treeArea" ng-class="{'active':area == areaCtrl.treeArea[0]}">
+							<a href="#area_{{$index}}" target="_self" data-toggle="tab" aria-expanded="false" >{{area.name}}</a>
+						</li>    
+                    </ul>
+					<div class="tab-content">
+                                <div ng-repeat="area in areaCtrl.treeArea" class="tab-pane fade" id="area_{{$index}}"   ng-class="{'active in':area == areaCtrl.treeArea[0]}">
+                                    <p>{{area.description}}</p>
+                                    <ul ng-if="area.subareas.length != 0 ">
+                                    	<li ng-repeat="subarea in area.subareas track by $index">
+                                    		<a ui-sref="home.temario({rol:areaCtrl.rol,subId:subarea._id})">{{subarea.name}}
+                                    		</a>
+                                    	</li>
+                                    </ul>
+                                    <div  class="alert alert-warning" ng-if="area.subareas.length == 0 ">
+                                    	<strong>Lo sentimos </strong> no existen temarios disponibles
+                                    </div>
+                                </div>
+                               	
+                            </div>
+                           
+                        </div>
+                    </div>
+      </div>
+    </div>
+  </div> 

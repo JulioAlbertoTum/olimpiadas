@@ -21,33 +21,7 @@
                     $('div.sidebar-collapse').removeClass('collapse')
                 }
             });
-
-            /* MORRIS BAR CHART
-			-----------------------------------------*/
-            
-
-
-            /* MORRIS DONUT CHART
-			----------------------------------------*/
-            
-
-            /* MORRIS AREA CHART
-			----------------------------------------*/
-
-           
-
-            /* MORRIS LINE CHART
-			----------------------------------------*/
-            
-           
-        
-            // $('.bar-chart').cssCharts({type:"bar"});
-            // $('.donut-chart').cssCharts({type:"donut"}).trigger('show-donut-chart');
-            // $('.line-chart').cssCharts({type:"line"});
-
-            // $('.pie-thychart').cssCharts({type:"pie"});
        
-	 
         },
 
         initialization: function () {

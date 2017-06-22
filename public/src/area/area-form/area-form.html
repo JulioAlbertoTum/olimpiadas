@@ -4,10 +4,14 @@
     <input type="text" name="name" class="form-control" 
            ng-model="$ctrl.area.name" value="{{$ctrl.area.name}}" 
            required minlength="5" >
-  </div>
-  <div  class="alert alert-danger" ng-if="(areaForm.name.$error.required || areaForm.name.$error.minlength) && areaForm.name.$touched">
-        El nombre debe tener al menos 5 caracteres
+   <div  class="alert alert-danger-c" ng-if="(areaForm.name.$error.required) && areaForm.name.$touched">
+       Este campo es Obligatorio. 
     </div>
+  <div  class="alert alert-danger-c" ng-if="(areaForm.name.$error.minlength) && areaForm.name.$touched">
+        Este campo debe tener un minimo de 5 caracteres.
+    </div>
+  </div>
+ 
   <div class="form-group">
     <label>Descripcion</label>
     <textarea class="form-control" name="description" rows="3" ng-model=" $ctrl.area.description">{{$ctrl.area.description}}

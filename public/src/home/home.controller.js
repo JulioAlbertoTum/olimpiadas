@@ -4,14 +4,15 @@
 angular.module('olimpiadas')
 .controller('HomeController', HomeController);
 
-function HomeController(){
+HomeController.$inject = ['$auth','$location','SessionService'];
+function HomeController($auth,$location,SessionService){
 	var $ctrl = this;
+	$ctrl.user = SessionService.getUser();
 	$ctrl.titulo ="Home";
-	$ctrl.descripcion ="Esta es la pagina principal";
+	$ctrl.descripcion ="Bienvenido "+$ctrl.user.username+"";
 
-	$ctrl.verLogin = function(){
-		console.log("gatos en la oscuridad");
-		$('#verLogin').modal();
+	$ctrl.logoutUser = function(){
+		SessionService.logout();
 	}
 }
 

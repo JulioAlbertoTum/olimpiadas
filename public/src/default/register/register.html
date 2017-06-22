@@ -1,0 +1,37 @@
+<form name="registerForm">
+  <div class="form-group" ng-class="{'has-error':(registerForm.username.$error.required || registerForm.username.$error.minlength) && registerForm.username.$touched}">
+    <label for="">Username</label>
+    <input type="text" name="username" class="form-control" ng-model="$ctrl.user.username" required minlength="3">
+
+    <div  class="alert alert-danger-c" ng-if="(registerForm.username.$error.required) || registerForm.username.$error.minlength && registerForm.username.$touched">
+        Este campo es obligatorio con un minimo de 3 caracteres.
+      </div>
+  </div>
+  <div class="form-group"  ng-class="{'has-error':(registerForm.email.$error.required || registerForm.email.$error.email) && registerForm.email.$touched}">
+    <label for="">Email</label>
+    <input type="email" name="email" class="form-control" ng-model="$ctrl.user.email" required>
+
+    <div  class="alert alert-danger-c" ng-if="(registerForm.email.$error.required) && registerForm.email.$touched">Este campo es obligatorio.
+    </div>
+    <div  class="alert alert-danger-c" ng-if="(registerForm.email.$error.email) && registerForm.email.$touched">
+        El formato de email es incorrecto.
+    </div>
+  </div>
+  <div class="form-group" ng-class="{'has-error':(registerForm.password.$error.required) && registerForm.email.$touched}">
+    <label for="">Contrasena</label>
+    <input type="password" name="password" class="form-control" ng-model="$ctrl.user.password" required>
+     <div  class="alert alert-danger-c" ng-if="(registerForm.password.$error.required) && registerForm.password.$touched">Este campo es obligatorio.
+    </div> 
+  </div>
+  <div class="form-group">
+    <label for="">Rol</label>
+    <select class="form-control" name="rol" ng-model="$ctrl.user.rol" required>
+      <option value="estudiante" ng-selected="selected">Estudiante</option>
+      <option value="evaluador">Evaluador</option>
+      <option value="admin">Adminstrador</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.register()" ng-disabled="registerForm.$invalid">Registrarse</button>
+  </div>
+</form>   

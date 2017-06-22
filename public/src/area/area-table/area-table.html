@@ -38,7 +38,7 @@
               <button class="btn btn-danger btn-circle-sm" data-toogle="tooltip"  title="Eliminar Area"  ng-click="$ctrl.delete($index)">
                 <i class="fa fa-trash-o "></i>
               </button>
-              <button  ui-sref="temario({subId:area._id})" ng-if="area.parent" class="btn btn-warning btn-circle-sm" data-toogle="tooltip"  title="Ver Temas" ng-click="">
+              <button  ui-sref="home.temario({rol:$ctrl.rol,subId:area._id})" ng-if="area.parent" class="btn btn-warning btn-circle-sm" data-toogle="tooltip"  title="Ver Temas" ng-click="">
                 <i class="fa fa-list-alt "></i>
               </button >
             </td>    

@@ -5,8 +5,8 @@ angular.module('olimpiadas')
 .controller('QuestionController',QuestionController);
 
 
-QuestionController.$inject =['questions','$stateParams','QuestionService'];
-function QuestionController(questions,$stateParams,QuestionService){
+QuestionController.$inject =['questions','$stateParams','QuestionService','$alert'];
+function QuestionController(questions,$stateParams,QuestionService,$alert){
 	var $ctrl = this;
 
 	$ctrl.titulo = "Preguntas";
@@ -17,6 +17,10 @@ function QuestionController(questions,$stateParams,QuestionService){
 	$ctrl.current = null;
 	$ctrl.status = '';
 	$ctrl.index = -1;
+
+	$ctrl.isEmpty = function(){
+		return $ctrl.questions.length == 0
+	}
 
 	$ctrl.setCurrentQuestion = function(index){
 		
@@ -46,6 +50,15 @@ function QuestionController(questions,$stateParams,QuestionService){
 			$ctrl.current = null;
 			$ctrl.status = '';
 			$ctrl.index = -1;
+			var myAlert = $alert({ container:'.messages',
+								title: 'La pregunta se ha creado exitosamente.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+								templateUrl:'src/common/alert/alert.html',
+								type: 'success-custom', 
+								show: true,
+								duration:3});
+
 		});
 	}
 
@@ -62,6 +75,14 @@ function QuestionController(questions,$stateParams,QuestionService){
 			$ctrl.current = null;
 			$ctrl.status = '';
 			$ctrl.index = -1;
+			var myAlert = $alert({ container:'.messages',
+								title: 'La pregunta se ha actualizado exitosamente.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+								templateUrl:'src/common/alert/alert.html',
+								type: 'success-custom', 
+								show: true,
+								duration:3});
 		});
 	}
 
@@ -74,6 +95,14 @@ function QuestionController(questions,$stateParams,QuestionService){
 			$ctrl.status = '';
 			$ctrl.index = -1;
 			$("#borrarPregunta").modal('hide');
+			var myAlert = $alert({ container:'.messages',
+								title: 'La pregunta se ha eliminado exitosamente.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+							
+								type: 'info-custom', 
+								show: true,
+								duration:3});
 		});
 	}
 
@@ -92,6 +121,23 @@ function QuestionController(questions,$stateParams,QuestionService){
 			$ctrl.current.options.splice(pos,1);
 		}
 		
+	}
+
+	$ctrl.isMultiResp = function(){
+		var nroSol = 0,
+		res = true;
+		for(var option in $ctrl.current.options){
+			if($ctrl.current.options[option].isCorrect == true){
+
+				nroSol++
+			}
+
+		}
+		console.log(nroSol);
+		if(nroSol == 1)
+			res = false;
+
+		return res; 
 	}
 }
 })();

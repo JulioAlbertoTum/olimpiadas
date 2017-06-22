@@ -4,8 +4,8 @@
 angular.module('olimpiadas')
 .controller('TemarioController',TemarioController);
 
-TemarioController.$inject = ['areas','temario','TemarioService'];
-function TemarioController(areas,temario,TemarioService){
+TemarioController.$inject = ['areas','temario','TemarioService','SessionService'];
+function TemarioController(areas,temario,TemarioService,SessionService){
 	var $ctrl = this;
 
 	$ctrl.titulo = "Temario";
@@ -13,9 +13,9 @@ function TemarioController(areas,temario,TemarioService){
 
 	$ctrl.tree = areas;
 	$ctrl.currentArea = null;
-
+	$ctrl.rol = SessionService.getRol();
 	$ctrl.temario = temario;
-	$ctrl.current = {};
+	$ctrl.current = null;
 	$ctrl.currentTemaId = null;
 	$ctrl.getTree = function(){
 		var superareas = [];
@@ -65,6 +65,11 @@ function TemarioController(areas,temario,TemarioService){
 		
 	};
 
+	$ctrl.setCurrent = function(index){
+
+		$ctrl.current = $ctrl.temario[index];
+	}
+
 	$ctrl.createTema = function(tema){
 		$ctrl.current ={};
 		$("#crearTema").modal();
@@ -82,7 +87,7 @@ function TemarioController(areas,temario,TemarioService){
 		.then(function(response){			
 			$ctrl.temario.push(response.data);
 			$("#crearTema").modal('hide');
-			$ctrl.current = {};
+			$ctrl.current = null;
 
 		});
 	}
@@ -91,7 +96,7 @@ function TemarioController(areas,temario,TemarioService){
 		TemarioService.updateTema($ctrl.current)
 		.then(function(response){
 			$ctrl.temario[$ctrl.index] = response.data;
-			$ctrl.current = {};
+			$ctrl.current = null;
 			$ctrl.index = null;
 			$("#editarTema").modal('hide');
 		});
@@ -108,7 +113,7 @@ function TemarioController(areas,temario,TemarioService){
 		.then(function(response){
 			$ctrl.temario.splice($ctrl.index,1);
 			$ctrl.index = null;
-			$ctrl.current = {};
+			$ctrl.current = null;
 			$("#borrarTema").modal("hide");
 		});
 	}

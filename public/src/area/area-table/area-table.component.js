@@ -50,7 +50,8 @@ angular.module('olimpiadas')
 		onEdit:'&',
 		onCreate:'&',
 		onView:'&',
-		onDelete:'&'
+		onDelete:'&',
+		rol: '<'
 	}
 
 });

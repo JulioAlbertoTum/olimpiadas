@@ -41,7 +41,7 @@ exports.read_a_tema = function(req, res){
 exports.update_a_tema = function(req, res){
 	
 	Tema.findOneAndUpdate({'_id':req.params.temaId}, req.body, {new:true}, function(err, tema){
-		if(err)
+		if(err)	
 			res.send(err);
 		res.json(tema);
 	});

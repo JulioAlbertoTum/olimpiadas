@@ -2,7 +2,7 @@
 'use strict';
 var mongoose = require('mongoose'),
 	Area = mongoose.model('Areas');
-	// Category  = mongoose.model('Categories');
+	
 
 exports.list_all_areas = function(req, res){
 	Area.find({},function(err,area){
@@ -56,6 +56,10 @@ exports.delete_a_area = function(req, res){
 			res.send(err);
 		res.json({message:'Area borrada exitosamente'})
 	});
+}
+
+exports.es_privado = function(req, res){
+	res.status(200).send({message:"tienes acceso"});
 }
 
 exports.read_a_tree = function(req, res){

@@ -1,0 +1,114 @@
+<div class="header" > 
+  <h1 class="page-header">
+    {{temCtrl.titulo}}<small> {{ temCtrl.descripcion }}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Temario</a></li>
+  </ol>               
+</div>
+<div id="page-inner" >
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Areas</div>
+        <div class="panel-body">    
+          <area-treeview on-areas="temCtrl.getTree" 
+                         on-action="temCtrl.viewTemas(id,name)"
+                         on-menu="temCtrl.delCurrentTema(index)">
+          </area-treeview>
+        </div>
+      </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Temario 
+          <strong ng-if="temCtrl.currentArea">{{temCtrl.currentArea}}</strong>
+        </div>
+        <div class="panel-body">    
+          <div class="col-md-12">
+            <label for="">
+              <button class="btn btn-primary" ng-click="temCtrl.createTema()" ng-if="temCtrl.currentTemaId">Crear Tema</button>
+            </label>
+            <temario-table temario="temCtrl.temario"
+                           on-view="temCtrl.viewTema(index)"
+                           on-edit="temCtrl.editTema(index)"
+                           on-delete="temCtrl.deleteTema(index)"
+                           rol="temCtrl.rol">
+            </temario-table>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+
+</div>
+
+ <div class="modal fade" id="verTema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Informacion del  Tema</h4>
+                  </div>
+                  <div class="modal-body">
+                      <temario-view tema="temCtrl.current"></temario-view>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+ <div class="modal fade" id="crearTema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Crear tema</h4>
+                  </div>
+                  <div class="modal-body">
+                    <temario-form tema="temCtrl.current" created="true" on-create="temCtrl.saveTema()" ></temario-form>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+<div class="modal fade" id="editarTema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Editar Area</h4>
+      </div>
+      <div class="modal-body">
+            <temario-form tema="temCtrl.current" created="false" on-update="temCtrl.updateTema()"></temario-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="borrarTema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Tema</h4>
+                  </div>
+                  <div class="modal-body">
+                      <temario-delete tema="temCtrl.current" on-destroy="temCtrl.destroyTema()"></temario-delete>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>

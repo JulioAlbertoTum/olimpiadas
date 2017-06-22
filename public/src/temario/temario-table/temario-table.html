@@ -16,7 +16,7 @@
         <button class="btn btn-info btn-sm btn-circle-sm" data-toggle="tooltip" title="Ver Tema" ng-click="$ctrl.view($index)"><i class="fa fa-eye "></i></button>
         <button class="btn btn-success btn-sm btn-circle-sm" data-toggle="tooltip"  title="Editar Tema" ng-click="$ctrl.edit($index)"><i class="fa fa-edit "></i></button>
         <button class="btn btn-danger btn-circle-sm"  data-toggle="tooltip"  title="Eliminar Tema" ng-click="$ctrl.delete($index)"><i class="fa fa-trash-o "></i></button>
-        <a ui-sref="question({temaId:tema._id})" class="btn btn-warning btn-circle-sm" data-toggle="tooltip" title="Ver Preguntas"><i class="fa fa-question-circle"></i></a>
+        <a ui-sref="home.question({rol:$ctrl.rol, temaId:tema._id})" class="btn btn-warning btn-circle-sm" data-toggle="tooltip" title="Ver Preguntas"><i class="fa fa-question-circle"></i></a>
       </td>
     </tr>
   </tbody>

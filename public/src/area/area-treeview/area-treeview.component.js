@@ -16,20 +16,12 @@ function AreaTreeviewController($timeout){
 	var $ctrl = this;
 	$ctrl.titulo = "Inorganica";
 	$ctrl.$onInit = function(){
-		//$ctrl.configTree();
-		// console.log($ctrl.tree);
-		// $("#area-menu").metisMenu();
-		//$ctrl.titulo ="ganaderia";
-		// $("#area-menu").click(function(){
-		// 	alert("ganaderia");
-		// })
 		$timeout(function(){
 			$ctrl.metis();
 		});
 	}
 
 	$ctrl.makeAction = function(mySub){
-		// console.log(mySub._id,mySub.name);
 		$ctrl.onAction({id:mySub._id, name:mySub.name});
 	}
 

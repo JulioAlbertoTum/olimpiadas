@@ -1,73 +1,23 @@
-<div class="header" > 
-            <h1 class="page-header">
-              <i class="fa fa-home"></i> {{homeCtrl.titulo}}<small> {{ homeCtrl.descripcion }}</small>
-            </h1>
-            <ol class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li><a href="" ng-click="homeCtrl.verLogin()">Login</a></li>
-              <!-- <li><a href="">Register</a></li> -->
-            </ol>               
-          </div>
-          <div id="page-inner" >
-            <div class="row">
-              <!-- <div class="col-md-4 col-md-offset-4">
-                <div class="jumbotron">
-                     
-                </div>
-              </div> -->
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <a class="thumbnail">
-                    <img ng-src="img/examen.png" alt="Generar Preguntas">
-                  </a>
-                  <div class="caption">
-                    <h3>Autentificacion</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sunt, totam ea, cupiditate quisquam dicta repellendus rem facilis assumenda quaerat eligendi nihil recusandae. Enim, ipsum, assumenda!</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <a class="thumbnail">
-                    <img ng-src="img/examen.png" alt="Generar Preguntas">
-                  </a>
-                  <div class="caption">
-                    <h3>Crear Areas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sunt, totam ea, cupiditate quisquam dicta repellendus rem facilis assumenda quaerat eligendi nihil recusandae. Enim, ipsum, assumenda!</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <a class="thumbnail">
-                    <img ng-src="img/examen.png" alt="Generar Preguntas">
-                  </a>
-                  <div class="caption">
-                    <h3>Generar Preguntas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sunt, totam ea, cupiditate quisquam dicta repellendus rem facilis assumenda quaerat eligendi nihil recusandae. Enim, ipsum, assumenda!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="modal fade" id="verLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Iniciar Sesion</h4>
-                  </div>
-                  <div class="modal-body">
-                    <home-login></home-login>
-                  </div>
-                  <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-
-          </div>
+<nav-main on-logout="homeCtrl.logoutUser()"></nav-main>
+<nav-aside></nav-aside>
+<div id="page-wrapper">
+  <ui-view>
+  <div class="header">
+    <h1 class="page-header">
+     {{homeCtrl.titulo}}<small> {{ homeCtrl.descripcion }}</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+    </ol>  
+  </div>
+  <div id="page-inner" >
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="jumbotron text-center">
+          <h1>Bienvenido</h1>       
+        </div>
+      </div>
+    </div>
+  </div>   
+  </ui-view>        
+</div>

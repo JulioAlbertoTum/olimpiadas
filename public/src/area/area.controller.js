@@ -5,14 +5,15 @@
 angular.module('olimpiadas')
 .controller('AreaController',AreaController);
 
-AreaController.$inject = ['areas','AreaService'];
-function AreaController(areas, AreaService){
+AreaController.$inject = ['areas','AreaService','SessionService','$alert'];
+function AreaController(areas, AreaService, SessionService, $alert){
 	var $ctrl = this;
 
 	$ctrl.titulo ="Area";
 	$ctrl.descripcion = "Categorizacion de Pruebas";
-	$ctrl.areas = areas
-	//$ctrl.tree = AreaService.getTreeAreas();
+	$ctrl.areas = areas;
+	$ctrl.rol = SessionService.getRol();
+	$ctrl.treeArea = AreaService.getTreeAreas($ctrl.areas);
 	$ctrl.viewArea = false;
 	$ctrl.current = {};
 	$ctrl.new = {
@@ -20,8 +21,6 @@ function AreaController(areas, AreaService){
 		name:"",
 		description:""
 	};
-	// $ctrl.titulo = "Areas";
-	// $ctrl.super = $ctrl.getSuper();
 
 	$ctrl.index  = 0;
 	
@@ -48,9 +47,15 @@ function AreaController(areas, AreaService){
 			$('#crearArea').modal('hide');	
 			$ctrl.new = {};
 			$ctrl.index = 0;
+			var myAlert = $alert({ container:'.messages',
+								title: 'El area se ha creado exitosamente.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+							
+								type: 'success-custom', 
+								show: true,
+								duration:3});
 		});
-		// $ctrl.tree.push($ctrl.new);
-		// $ctrl.areas.push($ctrl.new);
 		
 	}
 
@@ -61,12 +66,15 @@ function AreaController(areas, AreaService){
 			$ctrl.areas[$ctrl.index] = response.data;
 			$('#editarArea').modal('hide');
 			$ctrl.current ={};
+			var myAlert = $alert({ container:'.messages',
+								title: 'Los datos se han actualizado.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+							
+								type: 'success-custom', 
+								show: true,
+								duration:3});
 		});
-
-		// AreaService.updateArea($ctrl.current);
-		// // console.log(update,$ctrl.current);
-		// $ctrl.current = {};
-		// $('#editarArea').modal('hide');
 	}
 
 	$ctrl.viewArea = function(index){
@@ -75,7 +83,6 @@ function AreaController(areas, AreaService){
 	}
 
 	$ctrl.showDelete = function(index){
-		// console.log("el area desde area controller");
 		$ctrl.current = $ctrl.areas[index];
 		$ctrl.index = index;
 		$("#borrarArea").modal();
@@ -85,7 +92,15 @@ function AreaController(areas, AreaService){
 		AreaService.deleteArea($ctrl.current._id)
 		.then(function(response){
 			$ctrl.areas.splice($ctrl.index,1)
-			$('#borrarArea').modal('hide');	
+			$('#borrarArea').modal('hide');
+			var myAlert = $alert({ container:'.messages',
+								title: 'El area ha sido eliminada.', 
+								// content: 'Los datos han sido actualizados', 
+								// placement: 'top', 
+							
+								type: 'info-custom', 
+								show: true,
+								duration:3});	
 		});
 		// console.log("eliminamos el area");
 		
@@ -102,6 +117,10 @@ function AreaController(areas, AreaService){
 		// console.log(sup);
 		return sup;
 	}
+
+	$ctrl.getSubarea
+
+
 
 	// console.log($ctrl.super);
 }

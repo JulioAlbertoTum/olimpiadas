@@ -1,0 +1,38 @@
+<div class="header">
+    <h1 class="page-header">
+     {{temCtrl.titulo}}<small> {{ temCtrl.descripcion }}</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#">Temario</a></li>
+    </ol>  
+  </div>
+  <div id="page-inner" >
+    <div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+        	<div class="panel-heading">Temario</div>
+        	<div class="panel-body">
+        		<ul>
+        			<li ng-repeat="tema in temCtrl.temario">
+        				<a href="" ng-click="temCtrl.setCurrent($index)">{{tema.name}}</a>
+        			</li>
+        		</ul>
+        	</div>
+        </div>
+      </div>
+      <div class="col-md-9">
+      	<div class="panel panel-default">
+        	<div class="panel-heading">Descripcion del Tema <strong>{{temCtrl.current.name}}</strong></div>
+        	<div class="panel-body">
+        		<p ng-if="temCtrl.current">{{temCtrl.current.description}}</p>
+        		<a href=""  ng-if="temCtrl.current" ui-sref="home.question({rol:temCtrl.rol,temaId:temCtrl.current._id})" class="btn btn-primary">ver Preguntas</a>
+        		<div class="alert alert-warning" ng-if="!temCtrl.current">
+        			Escoja un tema
+        		</div>
+
+        	</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>   

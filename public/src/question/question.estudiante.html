@@ -1,0 +1,50 @@
+<div class="header">
+	<h1 class="page-header">
+		{{qCtrl.titulo}} <small> {{ qCtrl.descripcion }} </small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="">Preguntas</a></li>
+	</ol>
+</div>
+<div id="page-inner" >
+  <div class="row">
+    <div class="col-md-5">
+    	<div class="panel panel-default">
+    		<div class="panel-heading">Preguntas</div>
+    		<div class="panel-body">
+    			<question-list questions="qCtrl.questions" 
+							   on-set="qCtrl.setCurrentQuestion(index)" ng-if="!qCtrl.isEmpty()">
+					</question-list>
+					<div class="alert alert-warning" ng-if="qCtrl.isEmpty()">
+						No hay preguntas :(
+					</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-7">
+    	<div class="panel panel-default" ng-if="!qCtrl.isEmpty()">
+    		<div class="panel-heading">Descripcion de la Pregunta</div>
+    		<div class="panel-body">
+    			<div>
+						
+						<h3>Vista preliminar</h3>
+						<hr>
+						<p>{{qCtrl.current.description}}</p>
+	
+	<form action="" ng-if="qCtrl.current.type_question == 'multiple' && !qCtrl.isMultiResp()" >
+		<div class="form-group" ng-repeat="option in qCtrl.current.options" >
+			<input type="radio" name="solution"> {{option.description}}
+		</div>
+	</form>
+
+	<form action="" ng-if="qCtrl.current.type_question == 'multiple' && qCtrl.isMultiResp()">
+		<div class="form-group" ng-repeat="option in qCtrl.current.options" >
+			<input type="checkbox" name="solution"> {{option.description}}
+		</div>
+	</form>
+<div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
