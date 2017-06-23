@@ -1,12 +1,12 @@
-# olimpiadas
+# Olimpiadas
 Una single web app para evaluacion  de  olimpiadas cientificas
 
-##Componentes del grupo: 
+#Componentes del grupo: 
 	+Gregorio Quintela Vargas
 	+Rafael Yerko Rojas Altamirano
 	+Julio Alberto Tumiri Llanque
 
-##Funcionalidad:
+#Funcionalidad:
 	+Autentificacion y Autorizacion para tres tipos de roles estudiante, administrador, evaluador.
 	+Creacion, Edicion,Eliminacion de Areas y Subareas.
 	+Creacion, Edicion,Eliminacion de Temario.
@@ -17,6 +17,10 @@ En la copia proporcionada en la maquina virtual existen 3 usuarios ya creados
 + leo@gmail.com    pass: leo   rol : administrador
 + jose@gmail.com    pass: jose   rol : evaluador
 + jorge@gmail.com    pass: jorge   rol : estudiante
+
+En la maquina virtual el proyecto se encuentra en la carpeta Documents con el nombre olimpiadas-master
+
+#Instalacion
 
 Los requerimientos son:
 +[Mongodb 3.2](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/")
