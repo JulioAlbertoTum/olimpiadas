@@ -6,7 +6,6 @@ Componentes del grupo:
 	Rafael Yerko Rojas Altamirano
 	Julio Alberto Tumiri Llanque
 
-
 Funcionalidad:
 	Autentificacion y Autorizacion para tres tipos de roles estudiante, administrador, evaluador.
 	Creacion, Edicion,Eliminacion de Areas y Subareas.
