@@ -13,12 +13,7 @@ Una single web app para evaluacion  de  olimpiadas cientificas
 	+Creacion, Edicion,Eliminacion de Temas.
 	+Creacion, Edicion,Eliminacion de Preguntas de tipo normal y opcion multiple.
 
-En la copia proporcionada en la maquina virtual existen 3 usuarios ya creados 
-+ leo@gmail.com    pass: leo   rol : administrador
-+ jose@gmail.com    pass: jose   rol : evaluador
-+ jorge@gmail.com    pass: jorge   rol : estudiante
-
-En la maquina virtual el proyecto se encuentra en la carpeta Documents con el nombre olimpiadas-master
+No existen usuarios, todos los usuarios con sus respectivos roles se pueden crear desde el registro.
 
 #Instalacion
 
@@ -27,6 +22,8 @@ Los requerimientos son:
 +[Nodejs](https://nodejs.org/es/download/)
 +[npm](https://www.npmjs.com/package/npm)
 +[nodemon](https://www.npmjs.com/package/nodemon)
+
+verificar y/o iniciar el servicio de mongodb:  service mongod start
 
 una vez instalado los requerimientos descargar el  codigo fuente ingresar a la carpeta y ejecutar:
 + npm install
