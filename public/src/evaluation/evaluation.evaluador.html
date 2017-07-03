@@ -1,0 +1,295 @@
+<div class="header">
+	<h1 class="page-header">
+		{{evCtrl.titulo}} <small> {{ evCtrl.descripcion }} </small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="">Evaluaciones</a></li>
+	</ol>
+</div>
+
+<div id="page-inner"> 
+	<div class="messages"></div>
+	<div class="row" ng-if="!evCtrl.flagEdit">
+		<div class="panel panel-default">
+  <div class="panel-heading">
+    Evaluaciones 
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <!-- <div class="row"> -->
+      <div class="col-md-3">
+        <label for="">
+          <button class="btn btn-primary" ng-click="evCtrl.create()">Crear Evaluacion</button>
+        </label>
+      </div>
+      <!-- </div> -->
+      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead >
+          <tr >
+            <th class="text-center">#</th>
+            <th class="text-center">Descripcion</th>
+            <th class="text-center">Nivel</th>
+            <th class="text-center">Etapa</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr ng-repeat="evaluation in evCtrl.evaluations">
+            <td>{{$index+1}}</td>
+            <td>{{evaluation.name}}</td>
+            <td>{{evCtrl.nameLevel[evaluation.level]}}</td>
+            <td>{{evCtrl.nameStage[evaluation.stage]}}</td>
+            <td class="center text-center">
+              <button class="btn btn-info btn-circle-sm" data-toogle="tooltip"  title="Ver Evaluacion" ng-click="evCtrl.view($index)">
+                <i class="fa fa-eye "></i>
+              </button>
+              <button class="btn btn-success btn-circle-sm" data-toogle="tooltip"  title="Editar Evaluacion" ng-click="evCtrl.edit($index)">
+                <i class="fa fa-edit "></i>
+              </button>
+              <button class="btn btn-danger btn-circle-sm" data-toogle="tooltip"  title="Eliminar Evaluacion"  ng-click="evCtrl.delete($index)">
+                <i class="fa fa-trash-o "></i>
+              </button>
+              
+            </td>    
+          </tr>  
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+	</div>
+	<div class="row" ng-if="evCtrl.flagEdit">
+		
+    
+
+		<div class="col-md-6">
+			<div class="panel panel-default">
+    		<div class="panel-heading">Lista de preguntas disponibles</div>
+    		<div class="panel-body">
+    			<div class="row">
+    			<div class="form-group col-md-6">
+							<label for="">Area</label>
+							<select name="" id="" class="form-control" ng-change="evCtrl.setArea()" ng-model="evCtrl.index_area">
+								<option  value="{{$index}}" ng-repeat="area in evCtrl.areas">{{area.name}}</option>
+								
+							</select>
+					</div>
+					<div class="form-group col-md-6">
+							<label for="">Subarea</label>
+							<select ng-if="!evCtrl.current_area" name="" id=""  class="form-control" disabled>
+								<option  value="" selected>No hay Subareas</option>
+							</select>
+
+							<select ng-if="evCtrl.current_area" name="" id="" ng-change="evCtrl.setSubarea()" class="form-control" ng-model="evCtrl.current_subarea">	
+								<option  ng-repeat="subarea in evCtrl.current_area.subareas" value="{{subarea._id}}">{{subarea.name}}</option>
+							</select>
+					</div>
+					</div>
+
+					<div class="form-group">
+							<label for="">Temario</label>
+							<select ng-if="!evCtrl.temario" name="" id=""  class="form-control" disabled>
+								<option  value="" selected>No hay Temas</option>
+							</select>
+
+							<select ng-if="evCtrl.temario" name="" id="" ng-change="evCtrl.setTema()" class="form-control" ng-model="evCtrl.tema">
+								<option  value="{{tema._id}}" ng-repeat="tema in evCtrl.temario">{{tema.name}}</option>
+							</select>
+					</div>
+
+					<hr>
+					<label for="">Preguntas</label>
+					<ul class="nav">
+						<li class="alert alert-warning" ng-if="!evCtrl.questions">No hay Preguntas</li>
+  					<li class="list-group-item" ng-if="evCtrl.questions" ng-repeat="question in evCtrl.questions">
+    					<button id="button_{{question._id}}" ng-click="evCtrl.addEvaluation($index)" class="btn btn-primary btn-circle-xxm"><a href="" style="color:white;"><i class="fa fa-bolt" aria-hidden="true"></i>
+</a></button>
+
+							<strong>{{question.description | limitTo:30}} ...</strong>
+							
+  					</li>
+					</ul>
+
+    		</div>
+    	</div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Edicion de la Evaluacion <button type="button" class="btn btn-info btn-xs pull-right" ng-click="evCtrl.backTable()">ver Tabla</button></div>
+        <div class="panel-body">
+
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#home-pills" target="_self" data-toggle="tab">Datos Generales</a>
+            </li>
+            <li class="">
+            <a href="#profile-pills" target="_self" data-toggle="tab" ng-if="evCtrl.dataEval._id">Seleccion de Preguntas</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade active in" id="home-pills"><br>
+              <form action="" name="evalForm" novalidate>
+                <div class="form-group" ng-class="{'has-error':(evalForm.name.$error.required) && evalForm.name.$touched}">
+                  <label for="">Nombre de la prueba</label>
+                  <input type="text" class="form-control" name="name" ng-model="evCtrl.dataEval.name" value="{{evCtrl.dataEval.name}}" required> 
+                  <div  class="alert alert-danger-c" ng-if="(evalForm.name.$error.required) && evalForm.name.$touched">
+                    Este campo es obligatorio
+                  </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':(evalForm.level.$error.required) && evalForm.level.$touched}">
+                  <label for="">Nivel</label>
+                  <select name="" id="" class="form-control" name="level" ng-model="evCtrl.dataEval.level" value="{{evCtrl.dataEval.level}}" required>
+                    <option value="primero">Primero de Secundaria</option>
+                    <option value="segundo">Segundo de Secundaria</option>
+                    <option value="tercero">Tercero de Secundaria</option>
+                    <option value="cuarto">Cuarto de Secundaria</option>
+                    <option value="quinto">Quinto de Secundaria</option>
+                    <option value="sexto">Sexto de Secundaria</option>
+                  </select>
+                  <div  class="alert alert-danger-c" ng-if="(evalForm.level.$error.required) && evalForm.level.$touched">
+                    Este campo es obligatorio
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="">Etapa</label>
+                  <select name="stage" id="" class="form-control" ng-model="evCtrl.dataEval.stage" value="{{evCtrl.dataEval.stage}}" required>
+                    <option value="first">Primera</option>
+                    <option value="second">Segunda</option>
+                    <option value="third">Tercera</option>
+                    <option value="fourth">Cuarta</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                <label for="">Fecha de Ejecucion</label>
+                  
+                    <input type="date" datetime-picker size="30" date-only class="form-control" ng-model="evCtrl.dataEval.date_start"  value="{{evCtrl.dataEval.date_start}}" >
+                    
+      
+                  
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">Hora Inicio</label>
+                    <input type="time" datetime-picker class="form-control" name="hour_start" ng-model="evCtrl.dataEval.hour_start" value="{{evCtrl.dataEval.hour_start}}">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">Hora Fin</label>  
+                    <input type="time" datetime-picker class="form-control" name="hour_end" ng-model="evCtrl.dataEval.hour_end" value="{{evCtrl.dataEval.hour_end}}" name="evalForm.hour_end" min="{{evCtrl.dataEval.hour_start}}" >
+                    <div  class="alert alert-danger-c" ng-if="(evalForm.hour_end.$error.min)">
+                    Debe ser mayor  a la hora de Inicio
+                  </div>
+                  </div>  
+                </div>
+                <div class="form-group text-center">
+                  <button type="button" class="btn btn-success" ng-disabled="evalForm.$invalid" ng-if="!evCtrl.flagupdate" ng-click="evCtrl.saveEvaluation()"> Guardar
+                  </button>
+                  <button type="button" ng-if="evCtrl.flagupdate" class="btn btn-success" ng-disabled="evalForm.$invalid" ng-click="evCtrl.updateEvaluation()"> Actualizar
+                  </button>
+                </div>
+              </form>                    
+            </div>
+            <div class="tab-pane fade" id="profile-pills">
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                <div class="form-group">
+                  <!-- <button class="btn btn-info btn-circle-sm" ng-click="evCtrl.togglePreview()"><i class="fa fa-eye "></i></button> -->
+                  <!-- <button class="btn btn-warning btn-circle-sm" ng-click="evCtrl.randomEvaluation()"><i class="fa fa-random "></i></button> -->
+                 <!--  <button class="btn btn-danger btn-circle-sm " ng-click="evCtrl.clearEvaluation()"><i class="fa fa-eraser "></i></button>
+             -->
+                </div>
+                </div>
+
+                <div class="col-md-12">
+                  <ul class="nav">
+                    <li ng-if="!evCtrl.evaluation">
+                      <div class="alert alert-warning">No hay preguntas adicionadas</div>
+                    </li>
+                    <li class="list-group-item" ng-if="evCtrl.evaluation" ng-repeat="question in evCtrl.evaluation">
+                      <div class="row">
+                        <div class="col-md-9">{{question.description | limitTo:30}} ...</div>
+                        <div class="col-md-2">25</div>
+                          <div class=" input-group col-md-1">
+                            <button class=" btn btn-danger btn-circle-xxm" ng-click="evCtrl.removeEvaluation($index)"><i class="fa fa-times"></i>
+                            </button>
+                          </div>
+                      </div>
+                    </li>     
+          </ul>
+          <br>
+          <div class="form-group text-center">
+            <button type="button" class="btn btn-success" ng-click="evCtrl.saveQuestions()">Guardar Preguntas</button>
+          </div>
+                </div>
+              </div>
+            </div>                    
+          </div>
+
+          
+          </div>
+        </div>
+      </div>
+
+    <div class="col-md-10 col-md-offset-1" ng-if="evCtrl.previewEvaluation">
+    	<div class="panel panel-default">
+    		<div class="panel-heading">Vista Preliminar</div>
+    		<div class="panel-body">
+    			<div class="row">
+    				
+           
+    			</div>
+          
+    		</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+
+
+	</div>
+</div>
+
+
+
+  <div class="modal fade" id="verEvaluacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Vista Preliminar</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+ <evaluation-preview data="evCtrl.evaluationPreview" evaluation="evCtrl.questionPreview" namelevel="evCtrl.nameLevel" namestage="evCtrl.nameStage">
+            </evaluation-preview>
+
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+ <div class="modal fade" id="deleteEvaluation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Vista Preliminar</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+                  <p>Esta seguro que desea eliminar la evaluacion <strong>{{evCtrl.evalDelete.name}}</strong>. </p>
+                  <div class="form-group">
+                    <button type="button" ng-click="evCtrl.destroy()" class="btn btn-danger">Eliminar</button>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>

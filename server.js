@@ -14,6 +14,7 @@ Area = require('./api/models/AreaModel'),
 Tema = require('./api/models/TemaModel'),
 Question = require('./api/models/QuestionModel'),
 Option = require('./api/models/OptionModel'),
+Evaluation = require('./api/models/EvaluationModel')
 // auth = require('./api/auth'),
 
 
@@ -41,12 +42,13 @@ var routeUser = require('./api/routes/UserRoutes');
 var routeArea = require('./api/routes/AreaRoutes');
 var routeTemario = require('./api/routes/TemarioRoutes');
 var routeQuestion = require('./api/routes/QuestionRoutes');
+var routeEvaluation = require('./api/routes/evaluationRoutes');
 
 routeUser(app);
 routeArea(app);
 routeTemario(app);
 routeQuestion(app);
-
+routeEvaluation(app);
 app.listen(port);
 
 console.log('exam list rest API server started on:'+port);

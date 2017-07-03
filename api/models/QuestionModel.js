@@ -37,7 +37,11 @@ var QuestionSchema = new Schema({
 	tema:{
 		type:  Schema.ObjectId, ref: 'Temas'
 	},
-
+	level:{
+		type: String,
+		enum:['easy','middle','hard'],
+		default: ['easy']
+	},
 	options:[ {type: Schema.ObjectId, ref: 'Options'} ]
 },{
 	timestamps: true

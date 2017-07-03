@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- open mind sort -->
 <head>
@@ -9,12 +9,14 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/angularjs-datetime-picker.css">
     <!-- Morris Chart Styles-->
     <!-- <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" /> -->
     <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css">  -->
 </head>
 
@@ -42,6 +44,7 @@
 	 
     <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
+   
     <!-- Morris Chart Js -->
     <!-- <script src="assets/js/morris/raphael-2.1.0.min.js"></script> -->
     <!-- <script src="assets/js/morris/morris.js"></script> -->
@@ -54,7 +57,7 @@
 	<script src="assets/js/custom-scripts.js"></script>
     <!-- Custom Js -->
     
-
+    <script src="lib/moment.min.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-underscore.js"></script>
     <script src="lib/angular-ui-router.min.js"></script>
@@ -62,7 +65,7 @@
     <script src="lib/angular-strap.tpl.min.js"></script>
     <script src="lib/satellizer.min.js"></script>
     <script src='lib/angular-local-storage.js'></script>
-    <!-- <script src="lib/ui-bootstrap.js"></script> -->
+    <script src="assets/js/angularjs-datetime-picker.js"></script>
 
     <script src="src/olimpiadas.module.js"></script>
    
@@ -90,10 +93,17 @@
     <script src="src/question/question.service.js"></script>
     
     <script src="src/question/question-option/question-option.component.js"></script>
+    <script src="src/question/question-eval/question-eval.component.js"></script>
     <script src="src/question/question-view/question-view.component.js"></script>
     <script src="src/question/question-list/question-list.component.js"></script>
     <script src="src/question/question-form/question-form.component.js"></script>
     <script src="src/question/question.controller.js"></script>
+
+    <script src="src/evaluation/evaluation.service.js"></script>
+    
+    <script src="src/evaluation/evaluation-preview/evaluation-preview.component.js"></script>
+    <script src="src/evaluation/evaluation-form/evaluation-form.component.js"></script>
+    <script src="src/evaluation/evaluation.controller.js"></script>
     
     <script src="src/profile/profile-form/profile-form.component.js"></script>
     <script src="src/profile/profile.controller.js"></script>
@@ -115,3 +125,4 @@
 </body>
 
 </html>
+

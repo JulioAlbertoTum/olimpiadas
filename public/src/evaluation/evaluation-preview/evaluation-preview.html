@@ -1,0 +1,15 @@
+<div class="col-md-12">
+<h3 class="text-center">{{$ctrl.data.name}}</h3>
+<p><strong>Grado Escolar: </strong>{{$ctrl.namelevel[$ctrl.data.level]}} <span><strong>Etapa Evaluacion: </strong>{{$ctrl.namestage[$ctrl.data.stage]}}</span></p>
+<p><strong>Fecha Inicio: </strong>{{$ctrl.data.date_start | date:shortDate}}
+<span>  
+   	<strong>Hora Inicio: </strong>{{ $ctrl.data.hour_start | date: "HH:mm:ss"}}
+	<strong>Hora Fin: </strong>{{$ctrl.data.hour_end | date: "HH:mm:ss" }}
+</span>
+</p>
+</div>
+<hr>
+<div class="col-md-12">
+   	<question-eval ng-repeat="question in $ctrl.evaluation" question="question" order="$index">		
+   	</question-eval>
+</div>

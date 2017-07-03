@@ -1,4 +1,4 @@
-<div class="form-group input-group" ng-class="{'has-error':(questionForm.option_{{$ctrl.index}}.$error.required) && questionForm.option_{{$ctrl.index}}.$touched}">
+<div class="form-group input-group">
 	<span class="input-group-addon">
     <input type="checkbox" ng-model="$ctrl.option.isCorrect" ng-disabled="$ctrl.isViewed()">
   </span>
@@ -8,7 +8,5 @@
 			<i class="fa fa-times "></i>
 		</button>
 	</span>
-	<div  class="alert alert-danger-c" ng-if="(questionForm.option_{{$ctrl.index}}.$error.required) && questionForm.option_{{$ctrl.index}}.$touched">
-       Este campo es Obligatorio. 
-    </div>
+	
 </div>

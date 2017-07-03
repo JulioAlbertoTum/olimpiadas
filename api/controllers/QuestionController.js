@@ -27,9 +27,11 @@ exports.read_a_question = function(req,res){
 	});
 };
 
+
 exports.create_a_question = function(req, res){
 	var object = {	description:req.body.description,
 					type_question:req.body.type_question,
+					level:req.body.level,
 					tema:req.body.tema
 				 };
 	var new_question = new Question(object);
@@ -77,6 +79,7 @@ exports.update_a_question = function(req, res){
 
 	var object = {	description:req.body.description,
 					type_question:req.body.type_question,
+					level:req.body.level,
 					tema:req.body.tema
 				 };
 
@@ -84,7 +87,7 @@ exports.update_a_question = function(req, res){
 		if(err)
 			res.send(err);
 
-	var options = req.body.options;
+	var options = req.body.options || [];
 
 	for(var i=0; i<options.length; i++){
 		var opParam = options[i];

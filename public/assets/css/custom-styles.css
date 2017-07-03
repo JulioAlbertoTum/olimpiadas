@@ -27,7 +27,7 @@ body {
     margin:10px 20px 10px 0px;
     background-color:transparent;
     padding: 15px 30px;
-    min-height:1200px;
+    min-height:440px;
 }
 .header .container-fluid{
 padding:0;
@@ -598,7 +598,7 @@ line-height: 1.428571429;
      #page-wrapper{
                margin: 0 0 0 260px;
                padding: 0;
-               min-height: 1200px;
+               min-height: 600px;
     }
 	
 	
@@ -653,6 +653,27 @@ font-size: 19px;
   border-radius: 30px;
 }
 
+.btn-circle-xm {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 16px;
+  line-height: 1.65;
+  border-radius: 30px;
+}
+
+
+.btn-circle-xxm {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 14px;
+  line-height: 1.65;
+  border-radius: 30px;
+}
+
 .btn-custom {
   background-color: #0866c6;
   /* border-color: white; */
@@ -688,6 +709,7 @@ font-size: 19px;
 
 .bg-purple{
   background-color: #875F9A !important; 
+  border-color: #875F9A !important;
 }
 
 .bg-lazuli{
@@ -716,3 +738,14 @@ font-size: 19px;
    background-color: #F6BB42 !important;
   color: white; 
 }
+
+.messages{
+  /* border: 4px solid red; */
+  width: 80%;
+  /* height: 100px; */
+  position: fixed;
+  top: 5em;
+  left: 19em;
+  z-index: 5;
+}
+

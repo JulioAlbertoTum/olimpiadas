@@ -7,7 +7,7 @@ angular.module('olimpiadas')
 	controller:QuestionViewController,
 	bindings:{
 		question: '<',
-		status: '<'
+		status: '<',
 	}
 });
 
@@ -16,6 +16,22 @@ function QuestionViewController(){
 
 	$ctrl.isPreview = function(){
 		return $ctrl.status == "preview";
+	}
+
+	$ctrl.isMultiResp = function(){
+		var nroSol = 0,
+		res = true;
+		for(var option in $ctrl.question.options){
+			if($ctrl.question.options[option].isCorrect == true){
+
+				nroSol++
+			}
+
+		}
+		if(nroSol == 1)
+			res = false;
+
+		return res; 
 	}
 }
 })();

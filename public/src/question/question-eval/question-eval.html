@@ -1,0 +1,24 @@
+
+	<hr style="margin:0; padding:0;border-width:2px;">
+	
+	<p class="text-justify"><strong>{{$ctrl.order+1}}.- </strong>{{$ctrl.question.description}}</p>
+	<form action="" ng-if="$ctrl.question.type_question == 'simple'">
+		<div class="form-group">	
+			<label for="">Respuesta:</label>
+			<textarea name="" id="" cols="50" rows="3" class="form-control"></textarea>
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-info btn-sm" disabled>Enviar Respuesta</button>
+		</div>
+	</form>
+	<form action="" ng-if="$ctrl.question.type_question == 'multiple'">
+		<div class="form-group" ng-repeat="option in $ctrl.question.options">
+			{{$ctrl.order+1}}.{{$index+1}} <input  type="checkbox" name="solution" ng-if="$ctrl.isMultiResp()"> 
+			<input  type="radio" name="solution" ng-if="!$ctrl.isMultiResp()"> 
+			{{option.description}}
+			
+		</div>
+		<div class="form-group">
+				<button type="button" class="btn btn-info btn-sm" disabled>Enviar Respuesta</button>
+			</div>
+	</form>

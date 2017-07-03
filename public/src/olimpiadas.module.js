@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-angular.module('olimpiadas',['angular-underscore','mgcrea.ngStrap.alert','LocalStorageModule','satellizer','ui.router'])
+angular.module('olimpiadas',['angular-underscore','mgcrea.ngStrap.alert','LocalStorageModule','satellizer','angularjs-datetime-picker','ui.router'])
 .constant('ApiPath','http://localhost:8080')
 .config(function(localStorageServiceProvider){
      localStorageServiceProvider.setPrefix('demoPrefix');

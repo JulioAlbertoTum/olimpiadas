@@ -38,7 +38,7 @@ function QuestionController(questions,$stateParams,QuestionService,$alert){
 	}
 
 	$ctrl.createQuestion =function(){
-		$ctrl.current = {type_question:'simple',tema:$ctrl.temaId, options:[]};
+		$ctrl.current = {type_question:'simple',tema:$ctrl.temaId, level:'easy', options:[]};
 		// alert("se crea una pregunta");
 		$ctrl.status='creatable';
 	}

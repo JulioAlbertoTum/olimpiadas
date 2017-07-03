@@ -13,6 +13,16 @@
         Este campo es obligatorio
     	</div>
 	</div>
+
+	<div class="form-group">
+		<label for="level">Nivel de Dificultad</label>
+		<select name="level" id="" class="form-control" ng-model="$ctrl.question.level" ng-disabled="$ctrl.isViewed()">
+			<option value="easy">Facil</option>
+			<option value="middle">Media</option>
+			<option value="hard">Dificil</option>
+		</select>
+	</div>
+
 	<div ng-if="$ctrl.question.type_question == 'multiple'">
 		<div class="col-md-3 col-md-offset-9" ng-if="$ctrl.isCreatable() || $ctrl.isEditable()">
 			<button type="button" class="btn btn-primary" ng-click="$ctrl.newOption()">

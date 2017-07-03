@@ -13,6 +13,9 @@ Una single web app para evaluacion  de  olimpiadas cientificas
 	+Creacion, Edicion,Eliminacion de Temas.
 	+Creacion, Edicion,Eliminacion de Preguntas de tipo normal y opcion multiple.
 
+Funcionalidad para el examen final
++ creacion edicion eliminacion de evaluaciones - rol evaluador 
+
 No existen usuarios, todos los usuarios con sus respectivos roles se pueden crear desde el registro.
 
 #Instalacion

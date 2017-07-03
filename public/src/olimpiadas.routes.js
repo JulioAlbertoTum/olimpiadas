@@ -122,6 +122,26 @@ function routeConfig($authProvider, $stateProvider,$urlRouterProvider, $location
 			requiredLogin: true,
 			permission: ['estudiante','evaluador']
 		}
+	})
+	.state('home.evaluation',{
+		url:'evaluation/{rol}',
+		templateUrl:function($stateParams){
+			return 'src/evaluation/evaluation.'+$stateParams.rol+'.html'
+		},
+		controller:'EvaluationController',
+		controllerAs:'evCtrl',
+		resolve:{
+			evaluations:['EvaluationService',function(EvaluationService){
+				return EvaluationService.getEvaluations();
+			}],
+			areas:['AreaService',function(AreaService){
+				return AreaService.getAreas();
+			}]
+		},
+		data:{
+			requiredLogin: true,
+			permission: ['evaluador']
+		}
 	});
 
 	$urlRouterProvider.otherwise('/');
